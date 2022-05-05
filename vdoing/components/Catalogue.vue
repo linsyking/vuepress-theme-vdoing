@@ -32,7 +32,7 @@
               <template v-for="(c, i) in item.children">
                 <template v-if="type(c) === 'array'">
                   <router-link :to="c[2]" :key="i"
-                    >{{ `${index + 1}-${i + 1}. ${c[1]}` }}
+                    >{{ `${index + 1}.${i + 1}. ${c[1]}` }}
                     <span class="title-tag" v-if="c[3]">
                       {{ c[3] }}
                     </span>
@@ -46,14 +46,14 @@
                 >
                   <div :id="(anchorText = c.title)" class="sub-title">
                     <a :href="`#${anchorText}`" class="header-anchor">#</a>
-                    {{ `${index + 1}-${i + 1}. ${c.title}` }}
+                    {{ `${index + 1}.${i + 1}. ${c.title}` }}
                   </div>
                   <router-link
                     v-for="(cc, ii) in c.children"
                     :to="cc[2]"
-                    :key="`${index + 1}-${i + 1}-${ii + 1}`"
+                    :key="`${index + 1}.${i + 1}.${ii + 1}`"
                   >
-                    {{ `${index + 1}-${i + 1}-${ii + 1}. ${cc[1]}` }}
+                    {{ `${index + 1}.${i + 1}.${ii + 1}. ${cc[1]}` }}
                     <span class="title-tag" v-if="cc[3]">
                       {{ cc[3] }}
                     </span>
