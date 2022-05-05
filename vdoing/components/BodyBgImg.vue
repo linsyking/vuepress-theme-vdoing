@@ -11,8 +11,32 @@ export default {
   data () {
     return {
       bgImg: '',
-      opacity: 0.5
+      bgbackup: '',
+      opacity: 0.5,
+      mtimer: null
     }
+  },
+  watch: {
+    "$route.path"() {
+      if (this.$frontmatter.custombg) {
+        // 自定义背景图片
+        if (this.bgbackup == '') {
+          this.bgbackup = this.bgImg
+        }
+        this.bgImg = this.$frontmatter.custombg
+        document.getElementsByClassName(
+          'theme-vdoing-wrapper'
+        )[0].style.opacity = 0.8
+      } else {
+        document.getElementsByClassName(
+          'theme-vdoing-wrapper'
+        )[0].style.opacity = 1
+        if (this.bgbackup !== '') {
+          this.bgImg = this.bgbackup
+          this.bgbackup =''
+        }
+      }
+    },
   },
   mounted () {
     let { bodyBgImg, bodyBgImgOpacity } = this.$themeConfig
@@ -21,16 +45,28 @@ export default {
       this.bgImg = bodyBgImg
     } else if (type(bodyBgImg) === 'array') {
       let count = 0
-      let timer = null
 
       this.bgImg = bodyBgImg[count]
-      clearInterval(timer)
-      timer = setInterval(() => {
+      clearInterval(this.mtimer)
+      this.mtimer = setInterval(() => {
+        if (this.$frontmatter.custombg) return
         if (++count >= bodyBgImg.length) {
           count = 0
         }
         this.bgImg = bodyBgImg[count]
       }, 15000);
+    }
+
+    if (this.$frontmatter.custombg) {
+      // 自定义背景图片
+      if (this.bgbackup == '') {
+        this.bgbackup = this.bgImg
+      }
+      this.bgImg = this.$frontmatter.custombg
+      document.getElementsByClassName(
+        'theme-vdoing-wrapper'
+      )[0].style.opacity = 0.8;
+      return;
     }
 
     if (bodyBgImgOpacity !== undefined) {

@@ -24,6 +24,9 @@
           <p v-if="homeData.tagline" class="description">
             {{ homeData.tagline }}
           </p>
+          <p>
+            <img alt="Custom badge" src="https://img.shields.io/endpoint?logo=GNU%20Bash&logoColor=%23FFF&style=for-the-badge&url=https%3A%2F%2Fyydbxx.cn%2Ftest%2Fblogget.php">
+          </p>
           <p class="action" v-if="homeData.actionText && homeData.actionLink">
             <NavLink class="action-button" :item="actionLink" />
           </p>

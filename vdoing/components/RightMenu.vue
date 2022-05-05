@@ -1,7 +1,7 @@
 <template>
   <div class="right-menu-wrapper">
     <div class="right-menu-margin">
-      <div class="right-menu-title">目录</div>
+      <div class="right-menu-title">Contents</div>
       <div class="right-menu-content">
         <div
           :class="[
@@ -112,7 +112,7 @@ export default {
           top 5px
           left 0
           width 3px
-          height 14px
+          height 18px
           background $accentColor
           border-radius 0 4px 4px 0
         a

@@ -121,6 +121,26 @@ module.exports = (options, ctx) => {
         before: info => `<div class="custom-block theorem"><p class="title">${info}</p>`,
         after: '</div>'
       }],
+      ['container',{
+        type: 'success',
+        before: info => `<div class="custom-block success">${info=='SUCCESS'?'':`<p class="title">${info}</p>`}`,
+        after: '</div>'
+      }],
+      ['container',{
+        type: 'info',
+        before: info => `<div class="custom-block info">${info=='INFO'?'':`<p class="title">${info}</p>`}`,
+        after: '</div>'
+      }],
+      ['container',{
+        type: 'define',
+        before: info => `<div class="custom-block info"><em>Definition${info=='DEFINE'?'':`(${info})`}.</em>`,
+        after: '</div>'
+      }],
+      ['container',{
+        type: 'proof',
+        before: info => `<div class="custom-block info">${info=='PROOF'?'':`<p class="title">${info}</p>`}`,
+        after: '<div style="display: inline-flex;width: 100%;justify-content: end;"><div style="width: 1em; height: 1em; background-color: #31708f;"></div></div></div>'
+      }],
       ['container', {
         type: 'details',
         before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
