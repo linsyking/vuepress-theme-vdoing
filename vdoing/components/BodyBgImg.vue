@@ -18,19 +18,22 @@ export default {
   },
   watch: {
     "$route.path"() {
+      let wrapper = document.getElementsByClassName(
+        'theme-vdoing-wrapper'
+      )
       if (this.$frontmatter.custombg) {
         // 自定义背景图片
         if (this.bgbackup == '') {
           this.bgbackup = this.bgImg
         }
         this.bgImg = this.$frontmatter.custombg
-        document.getElementsByClassName(
-          'theme-vdoing-wrapper'
-        )[0].style.opacity = 0.8
+        if (wrapper[0]) {
+          wrapper[0].style.opacity = 0.8
+        }
       } else {
-        document.getElementsByClassName(
-          'theme-vdoing-wrapper'
-        )[0].style.opacity = 1
+        if (wrapper[0]) {
+          wrapper[0].style.opacity = 1
+        }
         if (this.bgbackup !== '') {
           this.bgImg = this.bgbackup
           this.bgbackup =''
